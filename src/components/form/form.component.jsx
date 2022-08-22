@@ -12,6 +12,7 @@ const Form = ({ addTodo }) => {
       completed: false,
     };
     addTodo(newTodo);
+    setText("");
   };
 
   return (
