@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 import TodoList from "./components/todo-list/todo-list.component";
+import Form from "./components/form/form.component";
 
 function App() {
   const todosArray = [
@@ -38,10 +39,27 @@ function App() {
     setTodos(newTodos);
   };
 
+  const deleteTodo = (todoToDelete) => {
+    const newTodos = todos.filter((todo) => todo.id !== todoToDelete.id);
+
+    setTodos(newTodos);
+  };
+
+  const addTodo = (todoToAdd) => {
+    const newTodos = [...todos, todoToAdd];
+
+    setTodos(newTodos);
+  };
+
   return (
     <div className="App">
       <h1>ToDo App</h1>
-      <TodoList todos={todos} completeTodo={completeTodo} />
+      <Form addTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        completeTodo={completeTodo}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 }
