@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AppContainer, AppHeader } from "./App.styles.js";
 
 import TodoList from "./components/todo-list/todo-list.component";
 import Form from "./components/form/form.component";
+import Filter from "./components/filter/filter.component";
 
 function App() {
   const todosArray = [
@@ -24,6 +25,8 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(todosArray);
+  const [filteredTodos, setFilteredTodos] = useState(todos);
+  const [filter, setFilter] = useState("all");
 
   const completeTodo = (todoToComplete) => {
     const newTodos = todos.map((todo) => {
@@ -51,12 +54,33 @@ function App() {
     setTodos(newTodos);
   };
 
+  const setCurrentFilter = (f) => {
+    setFilter(f);
+  };
+
+  useEffect(() => {
+    switch (filter) {
+      case "all":
+        setFilteredTodos(todos);
+        break;
+      case "completed":
+        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        break;
+      case "uncompleted":
+        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+        break;
+      default:
+        break;
+    }
+  }, [filter, todos]);
+
   return (
     <AppContainer>
       <AppHeader>ToDo App</AppHeader>
       <Form addTodo={addTodo} />
+      <Filter setCurrentFilter={setCurrentFilter} filter={filter} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}
       />
