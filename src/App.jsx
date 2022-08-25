@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import { AppContainer, AppHeader } from "./App.styles.js";
 
 import TodoList from "./components/todo-list/todo-list.component";
 import Form from "./components/form/form.component";
@@ -52,15 +52,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>ToDo App</h1>
+    <AppContainer>
+      <AppHeader>ToDo App</AppHeader>
       <Form addTodo={addTodo} />
       <TodoList
         todos={todos}
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}
       />
-    </div>
+    </AppContainer>
   );
 }
 

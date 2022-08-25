@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+@import "./reset.css";
+
+* {
+  font-size: 24px;
+  font-family: "Oswald", sans-serif;
+}

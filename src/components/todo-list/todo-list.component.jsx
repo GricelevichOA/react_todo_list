@@ -2,9 +2,11 @@ import React from "react";
 
 import Todo from "../todo/todo.component";
 
+import { TodoListContainer } from "./todo-list.styles";
+
 const TodoList = ({ todos, completeTodo, deleteTodo }) => {
   return (
-    <div>
+    <TodoListContainer>
       {todos.map((todo) => {
         return (
           <Todo
@@ -15,7 +17,7 @@ const TodoList = ({ todos, completeTodo, deleteTodo }) => {
           />
         );
       })}
-    </div>
+    </TodoListContainer>
   );
 };
 

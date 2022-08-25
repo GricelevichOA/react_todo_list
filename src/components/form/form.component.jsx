@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { FormContainer, FormInput, FormButton } from "./form.styles";
+
 const Form = ({ addTodo }) => {
   const [text, setText] = useState("");
 
@@ -16,17 +18,17 @@ const Form = ({ addTodo }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={addTodoHandler}>
-        <input
+    <>
+      <FormContainer onSubmit={addTodoHandler}>
+        <FormInput
           type="text"
-          placeholder="Add ToDo"
+          placeholder="Enter text here"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit">Add todo</button>
-      </form>
-    </div>
+        <FormButton type="submit">Add</FormButton>
+      </FormContainer>
+    </>
   );
 };
 
