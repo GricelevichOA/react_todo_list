@@ -8,6 +8,12 @@ const Form = ({ addTodo }) => {
   const addTodoHandler = (e) => {
     e.preventDefault();
 
+    if (text === "") {
+      alert("Task cannot be empty");
+
+      return;
+    }
+
     const newTodo = {
       id: Date.now(),
       text: text,

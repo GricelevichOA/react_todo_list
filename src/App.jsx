@@ -6,25 +6,7 @@ import Form from "./components/form/form.component";
 import Filter from "./components/filter/filter.component";
 
 function App() {
-  const todosArray = [
-    {
-      id: 1,
-      text: "buy milk",
-      completed: true,
-    },
-    {
-      id: 2,
-      text: "buy cheese",
-      completed: false,
-    },
-    {
-      id: 3,
-      text: "cook dinner",
-      completed: false,
-    },
-  ];
-
-  const [todos, setTodos] = useState(todosArray);
+  const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState(todos);
   const [filter, setFilter] = useState("all");
 

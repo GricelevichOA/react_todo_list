@@ -2,21 +2,25 @@ import React from "react";
 
 import Todo from "../todo/todo.component";
 
-import { TodoListContainer } from "./todo-list.styles";
+import { TodoListContainer, TodoListEmpty } from "./todo-list.styles";
 
 const TodoList = ({ todos, completeTodo, deleteTodo }) => {
   return (
     <TodoListContainer>
-      {todos.map((todo) => {
-        return (
-          <Todo
-            key={todo.id}
-            todo={todo}
-            completeTodo={completeTodo}
-            deleteTodo={deleteTodo}
-          />
-        );
-      })}
+      {todos.length === 0 ? (
+        <TodoListEmpty>Empty list</TodoListEmpty>
+      ) : (
+        todos.map((todo) => {
+          return (
+            <Todo
+              key={todo.id}
+              todo={todo}
+              completeTodo={completeTodo}
+              deleteTodo={deleteTodo}
+            />
+          );
+        })
+      )}
     </TodoListContainer>
   );
 };
