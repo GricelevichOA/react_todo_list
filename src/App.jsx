@@ -6,7 +6,9 @@ import Form from "./components/form/form.component";
 import Filter from "./components/filter/filter.component";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) ?? []
+  );
   const [filteredTodos, setFilteredTodos] = useState(todos);
   const [filter, setFilter] = useState("all");
 
@@ -57,15 +59,6 @@ function App() {
         break;
     }
   }, [filter, todos]);
-
-  // get todos from localstorage (runs one)
-  useEffect(() => {
-    if (localStorage.getItem("todos")) {
-      setTodos(JSON.parse(localStorage.getItem("todos")));
-    }
-
-    setTodos([]);
-  }, []);
 
   // update todos in localstorage when todos array changes
   useEffect(() => {
