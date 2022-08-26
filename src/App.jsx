@@ -10,6 +10,7 @@ function App() {
   const [filteredTodos, setFilteredTodos] = useState(todos);
   const [filter, setFilter] = useState("all");
 
+  // todo status switcher
   const completeTodo = (todoToComplete) => {
     const newTodos = todos.map((todo) => {
       if (todo.id === todoToComplete.id) {
@@ -40,6 +41,7 @@ function App() {
     setFilter(f);
   };
 
+  // filter todos
   useEffect(() => {
     switch (filter) {
       case "all":
@@ -55,6 +57,20 @@ function App() {
         break;
     }
   }, [filter, todos]);
+
+  // get todos from localstorage (runs one)
+  useEffect(() => {
+    if (localStorage.getItem("todos")) {
+      setTodos(JSON.parse(localStorage.getItem("todos")));
+    }
+
+    setTodos([]);
+  }, []);
+
+  // update todos in localstorage when todos array changes
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <AppContainer>
