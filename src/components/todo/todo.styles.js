@@ -9,6 +9,10 @@ export const TodoContainer = styled.div`
 
   padding: 5px 0;
 
+  @media (max-width: 768px) {
+    padding: 5px 20px;
+  }
+
   /* &:after {
     content: "";
     display: block;

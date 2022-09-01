@@ -6,6 +6,10 @@ export const FormContainer = styled.form`
   justify-content: flex-start;
 
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 export const FormInput = styled.input`

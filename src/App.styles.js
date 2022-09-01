@@ -4,6 +4,10 @@ export const AppContainer = styled.div`
   width: 60%;
   margin: 20px auto;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const AppHeader = styled.h1`

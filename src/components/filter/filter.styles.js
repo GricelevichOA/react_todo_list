@@ -5,6 +5,10 @@ export const FilterContainer = styled.div`
   justify-content: flex-start;
 
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const FilterButton = styled.button`
